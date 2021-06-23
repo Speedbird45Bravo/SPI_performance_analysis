@@ -16,11 +16,11 @@ import pandas as pd
   # Win probability %
   # Adjusted xG
   # Non-Shot xG
-# As such, we will run through the FiveThirtyEight SPI dataset, examining Barclays Premier League matches between 2018-19 and 2020-21.
+# As such, we will run through the FiveThirtyEight SPI dataset, examining Barclays Premier League matches between 2019-20 and 2020-21.
 # If all indicators are in favor of one team, we will label them as "UNANIMOUS", meaning that the performance indicators were unanimous in favor of one team.
 # If the indicators are mixed between favoring one side or the other, it will be "MIXED."
 df = pd.read_csv("https://projects.fivethirtyeight.com/soccer-api/club/spi_matches.csv").dropna()
-df = df[df.league=="Barclays Premier League"].reset_index(drop=True)
+df = df[(df.league=="Barclays Premier League") & (df.season >= 2019)].reset_index(drop=True)
 
 # First, we need to generate comparisons between the performance metrics of the home and away team.
 # Usually margins like these would be generated as absolute values, but since we want to know how the teams stack up relative to one another,
