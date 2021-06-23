@@ -135,9 +135,10 @@ rfc_cv = GridSearchCV(estimator=rfc, param_grid=rf_params, cv=5)
 rfc_cv.fit(X_train, y_train)
 
 print("Best Params: {}".format(rfc_cv.best_params_))
+p_vals = list(rfc_cv.best_params_.values())
 
 # Running the model after finding the best parameters.
-rfc = RandomForestClassifier(criterion="gini", max_features="auto", max_depth=8, n_estimators=500)
+rfc = RandomForestClassifier(criterion=p_vals[0], max_features=p_vals[2], max_depth=p_vals[1], n_estimators=p_vals[3])
 rfc.fit(X_train, y_train)
 predictions = rfc.predict(X_test)
 accuracy = np.round(accuracy_score(y_test, predictions), 3) * 100
