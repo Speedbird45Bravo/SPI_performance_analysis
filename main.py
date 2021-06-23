@@ -137,7 +137,7 @@ rfc_cv.fit(X_train, y_train)
 print("Best Params: {}".format(rfc_cv.best_params_))
 
 # Running the model after finding the best parameters.
-rfc = RandomForestClassifier(criterion="gini", max_features="auto", max_depth=8, n_estimators=200)
+rfc = RandomForestClassifier(criterion="gini", max_features="auto", max_depth=8, n_estimators=500)
 rfc.fit(X_train, y_train)
 predictions = rfc.predict(X_test)
 accuracy = np.round(accuracy_score(y_test, predictions), 3) * 100
